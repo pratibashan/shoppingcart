@@ -22,7 +22,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         productDetails: action.productDetails
       };
-
+      break;
     case actionTypes.SAVE_PRODUCT:
       return {
         ...state,
@@ -46,7 +46,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         products: state.products.filter(product => {
-          return product._id != action.product._id;
+          return product._id !== action.product._id;
         })
       };
       break;

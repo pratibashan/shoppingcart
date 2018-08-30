@@ -15,21 +15,19 @@ const reducer = (state = initialState, action) => {
       break;
 
     case actionTypes.DELETE_CART_ITEM:
-      //console.log(action.cartItem._id);
       state = {
         ...state,
         cartItems: state.cartItems.filter(cartItem => {
-          return cartItem._id != action.cartItem._id;
+          return cartItem._id !== action.cartItem._id;
         })
       };
       break;
 
     case actionTypes.INCREMENT_QUANTITY:
       let cartItems = state.cartItems.map(item => {
-        if (item._id == action.cartItem._id) {
+        if (item._id === action.cartItem._id) {
           item.quantity += 1;
         }
-        console.log(item.quantity);
         return item;
       });
 
@@ -42,12 +40,11 @@ const reducer = (state = initialState, action) => {
 
     case actionTypes.DECREMENT_QUANTITY:
       let updatedCartItems = state.cartItems.map(item => {
-        if (item._id == action.cartItem._id) {
+        if (item._id === action.cartItem._id) {
           if (item.quantity > 1) {
             item.quantity -= 1;
           }
         }
-        //console.log(item.quantity);
         return item;
       });
 

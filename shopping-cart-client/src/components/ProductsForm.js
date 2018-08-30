@@ -21,6 +21,7 @@ class ProductsForm extends Component {
 
     this.state = {
       product: {},
+      optionValue: "",
       products: []
     };
   }
@@ -49,28 +50,42 @@ class ProductsForm extends Component {
   };
 
   handleOptionChange = e => {
-    console.log(this.state);
-    console.log(e.target.value);
-    this.setState({ optionValue: e.target.value });
-  };
+    console.log("Why?");
 
-  handleFocus = e => {
-    this.setState({ optionValue: "" });
+    // console.log(e.target.value);
+    this.setState({
+      optionValue: e.target.value
+    });
+    console.log(this.state.optionValue);
   };
 
   handleSaveProduct = () => {
-    let product = {
-      title: this.state.title,
-      imageURL: this.state.imageURL,
-      description: this.state.description,
-      price: this.state.price
-    };
-    console.log(product);
-    this.props.saveProductBtnClick(product);
+    // let product = {
+    //   title: this.state.title,
+    //   imageURL: this.state.imageURL,
+    //   description: this.state.description,
+    //   price: this.state.price
+    // };
+    console.log(this.state.product);
 
-    // this.setState({
-    //   price: ""
-    // });
+    let product = {
+      ...this.state.product
+    };
+    this.props.saveProductBtnClick(product);
+    this.setState({
+      title: "",
+      imageURL: "",
+      description: "",
+      price: ""
+    });
+  };
+  handleDeleteProduct = () => {
+    console.log(this.state.optionValue);
+
+    this.props.deleteProductBtnClick(this.state.optionValue);
+    this.setState({
+      optionValue: ""
+    });
   };
 
   render() {
@@ -85,7 +100,6 @@ class ProductsForm extends Component {
       <Grid>
         <Row className="show-grid">
           <Col>
-            {/* add product form */}
             <Well>
               <Panel id="productsAddFormPanel">
                 <Form>
@@ -99,6 +113,7 @@ class ProductsForm extends Component {
                       type="text"
                       onChange={this.handleTextChange}
                       name="title"
+                      value={this.state.title}
                       placeholder="Product Title"
                     />
                   </FormGroup>
@@ -111,6 +126,7 @@ class ProductsForm extends Component {
                       type="text"
                       onChange={this.handleTextChange}
                       name="imageURL"
+                      value={this.state.imageURL}
                       placeholder="ImageURL"
                     />
                   </FormGroup>
@@ -123,7 +139,8 @@ class ProductsForm extends Component {
                       type="text"
                       onChange={this.handleTextChange}
                       name="description"
-                      placeholder="Product Description"
+                      value={this.state.description}
+                      placeholder="Description"
                     />
                   </FormGroup>
                   <FormGroup
@@ -136,7 +153,7 @@ class ProductsForm extends Component {
                       onChange={this.handleTextChange}
                       name="price"
                       value={this.state.price}
-                      placeholder="Product Price"
+                      placeholder="Price"
                     />
                   </FormGroup>
                   <Button bsStyle="success" onClick={this.handleSaveProduct}>
@@ -172,9 +189,7 @@ class ProductsForm extends Component {
                 <Button
                   id="productDeleteBtn"
                   bsStyle="danger"
-                  onClick={() =>
-                    this.props.deleteProductBtnClick(this.state.optionValue)
-                  }
+                  onClick={this.handleDeleteProduct}
                 >
                   Delete Product
                 </Button>

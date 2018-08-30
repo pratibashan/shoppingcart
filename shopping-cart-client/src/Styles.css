@@ -30,11 +30,12 @@ body {
   padding: 0 5px;
   font-size: 15px;
   margin-left: -25px;
-  margin-top: -8px;
+  margin-top: 20px;
 }
 #cartIcon {
-  font-size: 40px;
+  font-size: 35px;
   color: #e4aa48;
+  margin-top: 30px;
 }
 #menu {
   margin-left: 0;
@@ -47,7 +48,19 @@ body {
 .menuLink:hover {
   color: grey;
 }
-#textMenu {
+#menuCollapse {
+  font-size: 18px;
+  margin-top: -20px;
+}
+#menuProducts {
+  padding: 15px;
+}
+#menuAdmin {
+  padding: 15px;
+}
+#menuCart {
+  padding: 15px;
+
   margin-top: 10px;
 }
 
@@ -56,12 +69,7 @@ body {
   margin: 15px;
   padding: 15px;
 }
-/* #productsAddForm {
-  height: auto;
-} */
-/* #cartMainPanel {
-  width: auto;
-} */
+
 #addToCartBtn {
   float: right;
   color: blue;
@@ -76,11 +84,8 @@ body {
   text-align: center;
 }
 #cartPanel {
-  /* display: flex; */
   margin: 5px;
   padding: 5px;
-  /* justify-content: space-between;
-  align-items: center; */
 }
 #cartGrid {
   width: 90%;
@@ -89,11 +94,9 @@ body {
   margin-left: 50px;
 }
 #trashIconBtn {
-  /* margin-top: -30px; */
   margin-left: 150px;
 }
 #cartImage {
-  /* margin-left: 30px; */
   width: 150px;
   height: 150px;
 }
@@ -117,12 +120,9 @@ body {
   float: right;
   margin: 15px;
 }
-/* #productItemCol {
-  height: 500px;
-}*/
+
 .thumbnail {
   max-height: 500px;
-  /* border: 0; */
 }
 .thumbnail img {
   height: 250px;
@@ -190,14 +190,6 @@ body {
   align-items: center;
 }
 
-/* #productDetailsRow {
-  display: flex;
-  /* flex-direction: column; 
-} */
-
-/* #productDetailsDiv{
-  margin-
-} */
 .footer {
   background-color: black;
   color: white;
@@ -208,7 +200,6 @@ body {
   left: 0;
   bottom: 0;
   width: 100%;
-  /* "bg-dark text-white mt-5 p-4 text-center" */
 }
 #confirmPanel {
   width: 50%;
@@ -223,7 +214,6 @@ body {
     padding: 0;
     margin: 0;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: flex-start;
   }
   #checkoutBtn {
@@ -246,12 +236,8 @@ body {
 @media screen and (min-width: 1000px) and (max-width: 1400px) {
   #trashIconBtn {
     margin-left: 5px;
-    /* margin-top: -10px; */
   }
-  /* #cartHeading {
-    padding: 0;
-    margin-top: 0;
-  } */
+
   #cartImage {
     margin-left: -30px;
   }

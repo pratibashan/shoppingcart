@@ -34,7 +34,7 @@ router.post("/addproduct", (req, res, next) => {
     price: req.body.price
   })
     .then(savedProduct => {
-      console.log(savedPost);
+      console.log(savedProduct);
       res.json({
         savedProduct
       });
@@ -51,7 +51,7 @@ router.post("/addreview", (req, res, next) => {
   )
 
     .then(updatedProduct => {
-      //console.log(savedPost)
+      console.log(updatedProduct);
       res.json(updatedProduct);
     })
     .catch(next);

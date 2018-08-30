@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import * as actionCreators from "../store/actionCreators";
 import StripeCheckout from "react-stripe-checkout";
 
-import { Modal, Panel, Well, Grid, Col, Row } from "react-bootstrap";
-import { Button, ButtonGroup, Label, Glyphicon } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Panel, Well, Grid, Col, Row } from "react-bootstrap";
+import { Button, ButtonGroup, Label } from "react-bootstrap";
 
 class Cart extends Component {
   handleStripeToken = token => {
@@ -22,7 +21,6 @@ class Cart extends Component {
     })
       .then(response => response.json())
       .then(json => {
-        console.log(json);
         if (json) {
           this.props.history.push("/success");
         } else {
@@ -31,10 +29,6 @@ class Cart extends Component {
       });
   };
   render() {
-    console.log("In Cart Component");
-    //console.log(this.props.cartItemsList);
-    console.log(this.props.total);
-    console.log(this.props.cartItemsList[0]);
     if (this.props.cartItemsList[0]) {
       return this.renderCart();
     } else {
@@ -54,7 +48,7 @@ class Cart extends Component {
         <Panel key={cartItem._id} id="cartPanel">
           <Row id="cartRow">
             <Col xs={12} md={2}>
-              <img id="cartImage" src={cartItem.imageURL} />
+              <img id="cartImage" src={cartItem.imageURL} alt="" />
               <span> </span>
             </Col>
             <Col xs={12} md={3}>
@@ -62,7 +56,10 @@ class Cart extends Component {
               <span> </span>
             </Col>
             <Col xs={12} md={2}>
-              <h6 id="cartHeading">usd.{cartItem.price}</h6>
+              <h6 id="cartHeading">
+                usd.
+                {cartItem.price}
+              </h6>
             </Col>
             <Col xs={12} md={2}>
               <h6 id="cartHeading">
@@ -94,12 +91,7 @@ class Cart extends Component {
                 className="glyphicon glyphicon-trash"
                 style={{ color: "red" }}
                 onClick={() => this.props.deleteCartItemBtnClick(cartItem)}
-              >
-                {/* <span
-                  className="glyphicon glyphicon-trash"
-                  style={{ color: "red" }}
-                /> */}
-              </Button>
+              />
             </Col>
           </Row>
         </Panel>
@@ -116,7 +108,7 @@ class Cart extends Component {
           <Row>
             <Col xs={12}>
               <StripeCheckout
-                amount="Math.round({`{this.props.total}00`})"
+                amount={Math.round(`{this.props.total}00`)}
                 // amount="20000"
                 name="Happy Shop"
                 description="Shopping Cart Application"
@@ -158,26 +150,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(actionCreators.decrementQuantity(cartItem)),
     deleteCartItemBtnClick: cartItem =>
       dispatch(actionCreators.deleteCartItem(cartItem))
-    // handleStripeTokenBtnClick: token =>
-    //   dispatch(actionCreators.handleStripeToken(token))
-
-    // saveCartBtnClick: this.props.cartItemsList =>
-    //   dispatch(
-    //     actionCreators.saveCart(this.props.cartItemsList)
-    //   )
   };
 };
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Cart);
-
-{
-  /* <Button
-id="checkoutBtn"
-bsStyle="success"
-onClick={() => this.handleShow()}
->
-Proceed to Checkout
-</Button> */
-}

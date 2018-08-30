@@ -10,6 +10,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+const PORT = process.env.PORT || 3000;
 
 //DB config
 const db = require("./config/keys").mongoURI;
@@ -57,6 +58,4 @@ app.use(function(err, req, res, next) {
   });
 });
 
-const port = process.env.port || 3000;
-
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

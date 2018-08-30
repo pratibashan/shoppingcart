@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Row, Col, Well, Button } from "react-bootstrap";
+// import { Row, Col, Well, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import * as actionCreators from "../store/actionCreators";
-import Cart from "./Cart";
-import { Grid, Thumbnail, Glyphicon, Panel } from "react-bootstrap";
+// import Cart from "./Cart";
+// import { Grid, Thumbnail, Glyphicon, Panel } from "react-bootstrap";
 
 class ProductItem extends Component {
   //update quantity in the cart
@@ -12,8 +12,6 @@ class ProductItem extends Component {
     if (this.props.cartItemsList.length > 0) {
       let cartIndex = this.props.cartItemsList.findIndex(item => {
         return item._id === product._id;
-        console.log("cartIndex");
-        console.log(cartIndex);
       });
       //if there is no match found
       if (cartIndex === -1) {
@@ -53,7 +51,7 @@ class ProductItem extends Component {
       // </Grid>
       <div className="container" id="productContainer">
         <div className="galleryItem">
-          <a href="#">
+          <a href="/">
             <img src={this.props.product.imageURL} alt="" />
           </a>
           <h5>{this.props.product.title}</h5>
@@ -61,8 +59,8 @@ class ProductItem extends Component {
         </div>
       </div>
     );
-    {
-      /* // <div className="container">
+    // {
+    /* // <div className="container">
       //   <div className="card-deck">
       //     <div className="card">
       //       <img src={this.props.product.imageURL} alt="" />
@@ -73,7 +71,7 @@ class ProductItem extends Component {
       //     </div>
       //   </div>
       // </div> */
-    }
+    // }
   }
 }
 
@@ -96,33 +94,33 @@ export default connect(
   mapDispatchToProps
 )(ProductItem);
 
-{
-  /* <Well>
+// {
+/* <Well>
 <Row>
   <Col xs={12}>
     <h6>{this.props.product.title}</h6>
     {/* <img src={this.props.product.imageURL} /> */
-}
-{
-  /* //     <p> {this.props.product.description}</p>
+// }
+// {
+/* //     <p> {this.props.product.description}</p>
 //     <h6>{this.props.product.price}</h6>
 //     <Button */
-}
-{
-  /* //       bsStyle="primary"
+// }
+// {
+/* //       bsStyle="primary"
 //       onClick={() => this.handleCart(this.props.product)}
 //     >
 //       Add to cart
 //     </Button> */
-}
-{
-  /* //   </Col>
+// }
+// {
+/* //   </Col>
 // </Row>
 // </Well> */
-}
+// }
 
-{
-  /* <div className="card mb-3" style={{ border: "1px solid grey" }}>
+// {
+/* <div className="card mb-3" style={{ border: "1px solid grey" }}>
         <img
           style={{ height: "200px", width: "100%", display: "block" }}
           src={this.props.product.imageURL}
@@ -143,4 +141,4 @@ export default connect(
           </a>
         </div>
       </div> */
-}
+// }

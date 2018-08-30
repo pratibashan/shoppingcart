@@ -6,28 +6,19 @@ import {
   Grid,
   Row,
   Col,
-  Well,
   Panel,
-  Form,
-  FormControl,
-  FormGroup,
-  ControlLabel,
   Button,
-  Thumbnail,
   Glyphicon,
-  Jumbotron,
   ListGroup,
   ListGroupItem
 } from "react-bootstrap";
 
 class ProductDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       rating: 1
-
-      // products: []
     };
   }
   componentDidMount() {
@@ -36,12 +27,9 @@ class ProductDetails extends Component {
   }
 
   handleCart(product) {
-    console.log("Fired");
     if (this.props.cartItemsList.length > 0) {
       let cartIndex = this.props.cartItemsList.findIndex(item => {
         return item._id === product._id;
-        console.log("cartIndex");
-        console.log(cartIndex);
       });
       //if there is no match found
       if (cartIndex === -1) {
@@ -57,10 +45,10 @@ class ProductDetails extends Component {
   onStarClick(nextValue, prevValue, name) {
     this.setState({ rating: nextValue });
   }
+
   render() {
     const { rating } = this.state;
-    console.log("inside");
-    console.log(this.props.productDetails);
+
     let productItems = (
       <Row id="movieDetailsRow">
         <Col sm={6} md={4} id="productItemImageCol">
@@ -107,8 +95,6 @@ class ProductDetails extends Component {
               />
 
               <Button
-                id="reviewStarBtn"
-                id="reviewBtn"
                 bsStyle="default"
                 onClick={() =>
                   this.props.addReviewBtnClick(
@@ -125,50 +111,7 @@ class ProductDetails extends Component {
       </Row>
     );
 
-    return (
-      <Grid>
-        {productItems}
-        {/* <Row>
-          <Well> */}
-        {/* /* delete product form*/}
-        {/* <Panel style={{ marginTop: "25px" }}> */}
-        {/* <FormGroup controlId="customerName">
-                <ControlLabel>Name</ControlLabel>
-                <FormControl
-                  type="text"
-                  onChange={this.handleTextChange}
-                  name="Name"
-                  placeholder="Enter Your Name"
-                />
-              </FormGroup>
-              <FormGroup controlId="email">
-                <ControlLabel>Email ID</ControlLabel>
-                <FormControl
-                  type="text"
-                  onChange={this.handleTextChange}
-                  name="email"
-                  placeholder="Enter your email id"
-                />
-              </FormGroup>
-              <h2>Rating from state: {rating}</h2> */}
-        {/* <StarRatingComponent
-            name="rate1"
-            starCount={5}
-            value={rating}
-            onStarClick={this.onStarClick.bind(this)}
-          />
-          <Button
-            id="reviewBtn"
-            bsStyle="primary"
-            onClick={() => this.props.addReviewBtnClick(this.state.rating)}
-          >
-            Add Review
-          </Button>
-        </Panel> */}
-        {/* </Well>  */}
-        {/* </Row> */}
-      </Grid>
-    );
+    return <Grid>{productItems}</Grid>;
   }
 }
 
