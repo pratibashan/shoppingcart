@@ -46,6 +46,11 @@ app.use(function(req, res, next) {
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/stripe", checkoutRoutes);
+// server static assets if it is production
+if (process.env.NODE_ENV === "production") {
+  //set static folder
+  app.use(express.static("shopping-cart-client/build"));
+}
 // app.use(express.static("public"));
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(public, "index.html"));
