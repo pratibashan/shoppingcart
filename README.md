@@ -11,3 +11,21 @@
 
 <img width="586" alt="screen shot 2018-08-23 at 9 35 37 am" src="https://user-images.githubusercontent.com/38846724/45009275-c0584680-afcc-11e8-9c4d-2a72062e8a91.png">
 
+## What It Is
+HappyShop is a ecommerce application that allows users to view and review products and add products to the cart.Users can also increase or decrease the quantity of the product,total price of the product.Admin can add,delete products and used Stripe API for user payment process. 
+
+## What I Used
+- React
+- Redux
+- Node.js
+- Express
+- MongoDB
+- React-Bootstrap
+- Stripe API
+
+## Our Stretch Goals
+- User Sign-Up
+- User authentication at sign in
+
+## Author
+- [Pratiba Shan](https://github.com/pratibashan)
